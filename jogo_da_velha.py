@@ -3,17 +3,23 @@ import pygame
 
 
 # pygame setup
-pygame.init()
-screen = pygame.display.set_mode((500, 500))
-pygame.display.set_caption('Jogo da Velha')
-clock = pygame.time.Clock()
-running = True
-cor_fundo = 1 #Azul
-# cor_fundo = 2 #Vermelho
+pygame.init() #inicialização do pygame
+pygame.font.init() #inicialização do pacote de fontes no pygame
+
+screen = pygame.display.set_mode((500, 500)) #definição do tamanho da tela
+pygame.display.set_caption('Jogo da Velha') #nome da janela
+clock = pygame.time.Clock() #biblioteca de tempo
+
+fonte_quadrinhos = pygame.font.SysFont('Comic Sans Ms', 30) #importar 
+running = True #variavel de controle do status do jogo
+
+personagem_x = fonte_quadrinhos.render('Δ', True, 'red')
+personagem_y = fonte_quadrinhos.render('o', True, 'red')
+cor_fundo = 1
 
 while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
+    # controle de evento do jogo
+    # pygame.QUIT 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -24,11 +30,13 @@ while running:
                 cor_fundo = 1
  
     if cor_fundo == 1:
-        screen.fill('blue')
+       # screen.fill('blue')
+       screen.blit(personagem_x,(240,240))
     elif cor_fundo == 2:
-        screen.fill('red')
+       # screen.fill('red')
+       screen.blit(personagem_y,(240,240))
     else:
-        screen.fill('purple')
+       screen.fill('purple')
 
 
     # flip() the display to put your work on screen
